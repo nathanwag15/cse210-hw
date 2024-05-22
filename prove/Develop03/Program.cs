@@ -217,7 +217,18 @@ class Program
             {
                 condition = false;
             } 
-            randomScripture.HideRandomWords(3);
+
+             else if (answer != "quit")
+            {
+                randomScripture.HideRandomWords(3);
+                
+            }
+
+            if (randomScripture.IsCompletelyHidden())
+                {
+                    condition = false;
+                }
+            
             
         }        
     }

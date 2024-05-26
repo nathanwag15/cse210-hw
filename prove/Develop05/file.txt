@@ -1,0 +1,2 @@
+800
+ChecklistGoal:Go to church~~You must go to church~~600~~500~~3~~3

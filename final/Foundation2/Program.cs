@@ -14,13 +14,22 @@ class Program
         orderTwo.AddProduct(new Product("Sushi", "00000", 12.00, 2));
         orderTwo.AddProduct(new Product("Shoyu", "1234", 5.50, 2));
 
-        orderOne.getShippingLabel();
-        orderOne.getPackingLabel();        
-        Console.WriteLine($"Total: {orderOne.GetTotalCost()}\n");
+        Console.WriteLine($"\n\nOrder 1 Total Cost: ${orderOne.GetTotalCost()}");
+        Console.WriteLine("Packing Label");
+        Console.WriteLine("========================");        
+        orderOne.getPackingLabel(); 
+        Console.WriteLine("\nShipping Label");
+        Console.WriteLine("========================");  
+        orderOne.getShippingLabel();       
 
-        orderTwo.getShippingLabel();
-        orderTwo.getPackingLabel();        
-        Console.WriteLine($"Total: {orderTwo.GetTotalCost()}");
+
+        Console.WriteLine($"\n\nOrder 2 Total Cost: ${orderTwo.GetTotalCost()}");
+        Console.WriteLine("Packing Label");
+        Console.WriteLine("========================");
+        orderTwo.getPackingLabel();         
+        Console.WriteLine("\nShipping Label");
+        Console.WriteLine("========================");
+        orderTwo.getShippingLabel();        
     }
 }
 
@@ -45,7 +54,7 @@ class Product
 
     public string getPackingLabelInfo()
     {
-        return $"{_name}: {_productId}";
+        return $"{_productId} - {_name}";
     }
 }
 
@@ -68,7 +77,7 @@ class Customer
 
     public string getShippingLabelInfo()
     {
-        return $"{_name}: {_address.GetAddress()}";
+        return $"{_name}\n{_address.GetAddress()}";
     }
 
 }
@@ -102,7 +111,7 @@ class Address
 
     public string GetAddress()
     {
-        return($"{_streetAddress} {_city} {_state} {_country}");
+        return($"{_streetAddress}\n{_city}, {_state}, {_country}");
     }
 }
 

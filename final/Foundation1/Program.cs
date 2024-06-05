@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Reflection;
 using System.Transactions;
@@ -27,10 +28,11 @@ class Program
 
        foreach (Video video in videos)
        {
-            Console.WriteLine($"\n\nThis video was made by {video._author} it's name is {video._title} it is {video._length} secs long and has {video.GetComments()} comments.");
+            Console.WriteLine($"\n\n'{video.GetTitle()}' by '{video.GetAuthor()}' ({video.GetLength()} seconds)");
+            Console.WriteLine($"Comments: ({video.GetComments()})");
             foreach (Comment comment in video._comments)
             {
-                Console.WriteLine($"{comment._name}: {comment._text}");
+                Console.WriteLine($"> {comment.GetName()}: {comment.GetText()}");
             }
        }
     }
@@ -38,9 +40,9 @@ class Program
 
 class Video
 {
-    public string _title = "";
-    public string _author = "";
-    public string _length = "";
+    private string _title = "";
+    private string _author = "";
+    private string _length = "";
 
     public List<Comment> _comments = new List<Comment>();
 
@@ -48,6 +50,36 @@ class Video
     {
         _title = title;
         _author = author;
+        _length = length;
+    }
+
+    public string GetTitle()
+    {
+        return _title;
+    }
+
+    public void SetTitle(string title)
+    {
+        _title = title;
+    }
+
+    public string GetAuthor()
+    {
+        return _author;
+    }
+
+    public void SetAuthor(string author)
+    {
+        _author = author;
+    }
+
+    public string GetLength()
+    {
+        return _length;
+    }
+
+    public void SetLength(string length)
+    {
         _length = length;
     }
 
@@ -66,12 +98,34 @@ class Video
 
 class Comment
 {
-    public string _name = "";
-    public string _text = "";
+    private string _name = "";
+    private string _text = "";
 
     public Comment(string name, string text)
     {
         _name = name;
         _text = text;
     }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public void SetName(string name)
+    {
+        _name = name;
+    }
+
+    public string GetText()
+    {
+        return _text;
+    }
+
+    public void SetText(string text)
+    {
+        _text = text;
+    }
+
+
 }
